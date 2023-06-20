@@ -22,8 +22,13 @@ console.log('We in dere')
 
 app.get('/muscle', async (request, response) => {
     try {
-        const videos = await MuscleVideo.find();
-        response.json(videos);
+        let allVideos = []
+        if (request.user?.email) {
+            allVideos = await MuscleVideo.find({});
+        } else {
+            allVideos = await MuscleVideo.find();
+        }
+        response.json(videoURL);
     } catch (error) {
         console.error('Error retrieving workout videos:', error);
         res.status(500).json({ error: 'Server Error' });
