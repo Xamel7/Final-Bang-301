@@ -6,17 +6,20 @@ const cors = require('cors');
 const muscleVideo = require('./Muscle');
 const mongoose = require('mongoose');
 // const verifyUser = require("./verifyUser")
+const cloudinary = require('cloudinary')
 
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
     api_key: process.env.CLOUDINARY_KEY,
     api_secret: process.env.CLOUDINARY_SECRET
 });
+cloudinary.v2.uploader.upload()
 
 
 const PORT = process.env.PORT || 3002;
@@ -24,7 +27,7 @@ const PORT = process.env.PORT || 3002;
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING).then(() => {
     console.log("connected successfully..")
 })
-console.log('We in dere')
+console.log('Roger Roger')
 app.get('/', async (request, response) => {
     response.send("test")
 })
@@ -46,7 +49,7 @@ app.get('/muscle', async (request, response) => {
 
 // app.post('/upload', async (request, response) => {
 //     try{
-        
+
 //     }
 // })
 
