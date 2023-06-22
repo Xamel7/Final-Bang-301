@@ -29,9 +29,6 @@ mongoose.connect(process.env.DATABASE_CONNECTION_STRING).then(() => {
     console.log("connected successfully..")
 })
 console.log('Roger Roger')
-app.get('/', async (request, response) => {
-    response.send("test")
-})
 
 app.get('/muscle', async (request, response) => {
     try {
