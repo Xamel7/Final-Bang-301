@@ -5,13 +5,14 @@ const express = require('express');
 const cors = require('cors');
 const muscleVideo = require('./Muscle');
 const mongoose = require('mongoose');
-// const verifyUser = require("./verifyUser")
+const verifyUser = require("./verifyUser")
 const cloudinary = require('cloudinary')
 
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(verifyUser)
 
 
 cloudinary.config({
